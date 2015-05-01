@@ -25,7 +25,7 @@
     </div>
     <div class="viewTopicButtons">
         <?php if($this->topic['is_closed'] == 0): ?>
-            <button id="answerButton">Answer</button>
+            <a class="button" href="#" id="answerButton">Answer</a>
         <?php endif; ?>
         <?php if ($this->isOwnTopic || $this->isAdmin): ?>
             <a class="button" id="editTopic" href="#x">Edit</a>

@@ -12,7 +12,7 @@
         <?php else: ?>
         <?php foreach ($this->users as $user): ?>
         <tr>
-            <td><a href="<?= $this->url('users', 'profile', 'id', $user['id']);?>"><?= $user['username']; ?></a></td>
+            <td><a href="<?= $this->url('users', 'profile', 'id', $user['id']);?>"><?= htmlspecialchars($user['username']); ?></a></td>
             <td><?= $user['last_click']; ?></td>
             <td><a href="<?= $this->url(strtolower($user['controller']), $user['action']);?>"> <?= $user['page']; ?></a></td>
         </tr>

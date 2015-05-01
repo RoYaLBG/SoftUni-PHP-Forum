@@ -145,9 +145,9 @@
 <div id="wrapper">
 
     <header>
-        <h1>Space Odyssey Forum</h1>
+        <h1>RoYaL's Forum</h1>
 
-        <h2>Space Adventure</h2>
+        <h2>Everything in depth</h2>
         <div class="navigation">
             <ul>
                 <li><a href="<?= $this->url('welcome', 'index'); ?>">Home</a><span> -></span></li>
@@ -179,7 +179,7 @@
                 <button onclick="searchTopics()">find</button>
             </div>
 
-            <h2 class="welcomeUser">Welcome <?= $_SESSION['username']; ?></h2>
+            <h2 class="welcomeUser">Welcome <?= htmlspecialchars($_SESSION['username']); ?></h2>
         <?php endif; ?>
         <div id="topics"></div>
     </header>
