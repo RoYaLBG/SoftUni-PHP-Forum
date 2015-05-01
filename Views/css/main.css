@@ -1,0 +1,501 @@
+@font-face {
+  font-family: 'Tahoma';
+}
+
+html, body, ul, li, form, p, a, section, article, main, header, footer, div, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Tahoma';
+    font-size: 100%;
+    background-color: #74AFAD;
+}
+
+a {
+    color: #000;
+}
+
+select,th,td,textarea {
+    font-family: 'Tahoma';
+    font-size: 20px;
+}
+
+input, button {
+    height: 25px;
+    line-height: 25px;
+    font-size: 20px;
+    border: none;
+    padding: 0 5px;
+	font-family: 'Tahoma';
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+textarea {
+    font-size: 18px;
+}
+
+#wrapper {
+    width: 70%;
+    margin: 50px auto;
+    background: #ECECEA;
+
+}
+
+#wrapper header h1, .adminForumHeading {
+    background: #558C89;
+    text-shadow: 2px 4px 3px #000;
+    color: #fff;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 2rem;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
+#wrapper header h2 {
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 5px;
+    background: rgba(255, 255, 255, .7);
+    text-shadow: 1px 1px #fff;
+}
+
+#wrapper header ul {
+    list-style-type: none;
+    display: inline-block;
+    width: 66%;
+    margin-left: 2%;
+}
+
+#wrapper header ul li {
+    display: inline-block;
+    margin-right: 1%;
+}
+
+#wrapper header ul li button {
+    text-decoration: none;
+    display: block;
+    color: #000;
+    background-color: #fff;
+}
+
+#wrapper header ul li button:hover {
+    background-color: #558C89;
+    color:#fff;
+}
+
+#wrapper header form {
+    display: inline-block;
+    margin-right: 3%;
+    padding: 2px 0;
+}
+
+#wrapper header h2.welcomeUser {
+    margin: 15px;
+    background-color: transparent;
+    color:#558C89;
+    text-shadow: 1px 1px #000;
+}
+
+.navigation {
+    background-color: #558C89;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.navigation a {
+    text-decoration: none;
+    font-size: 15px;
+}
+
+.navigation a:hover {
+    color:#fff;
+}
+
+#search {
+    width: 30%;
+    display: inline-block;
+}
+
+#search input {
+    width: 70%;
+}
+
+#loginRegisterField {
+    padding: 10px;
+}
+
+#loginRegisterField h2{
+    text-align: center;
+    padding: 10px;
+    text-shadow: 1px 1px #000;
+    color: #fff;
+
+}
+
+#loginRegisterField input,#loginRegisterField label {
+    display: block;
+    font-size: 19px;
+    margin: 0 auto 5px;
+    width: 50%;
+    color:#fff;
+    text-shadow: 1px 1px #000;
+}
+
+#loginRegisterField input {
+    color: #000;
+    text-shadow: none;
+}
+
+
+#loginRegisterField button {
+    display:block;
+    margin: 20px auto 15px;
+}
+
+#response {
+    width: 99%;
+    color: #558C89;
+    padding: 5px;
+    margin: 25px auto 0;
+    text-transform: uppercase;
+}
+
+#response h2 {
+    text-align: center;
+}
+
+/*Search results*/
+
+#topics {
+    margin: 25px 22px 0 22px;
+}
+
+#topics a {
+    color: #fff;
+    font-size: 19px;
+    display: block;
+}
+.noResults {
+    color: red;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 25px;
+}
+
+#addTopic {
+    padding: 10px;
+    width: 100%;
+    display: inline-block;
+}
+
+#addTopic h1 {
+    text-align: center;
+    text-shadow: 1px 1px #fff;
+}
+#addTopic input {
+    width: 80%;
+    margin: 15px auto 0;
+    display: block;
+    padding: 5px;
+}
+#addTopic textarea {
+    width: 80%;
+    height: 150px;
+    margin: 0 auto;
+    display: block;
+    margin-top: 15px;
+    padding:5px;
+}
+
+#addTopic button {
+    font-size: 25px;
+    margin: 0 auto;
+    display:block;
+    margin-top: 15px;
+}
+
+table {
+    width: 96%;
+    border: 1px solid #000;
+    border-collapse: collapse;
+    background: rgba(255,255,255, .6);
+    margin: 0 auto 20px;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: center;
+}
+
+td span {
+    display: block;
+    margin-top: 15px;
+}
+
+table td a {
+    color: #558C89;
+}
+
+#mainSection {
+    width: 70%;
+    vertical-align: top;
+    margin:15px 10px 20px;
+    border:2px solid #fff;
+    background-color: #999;
+}
+
+footer {
+    padding: 5px;
+    background-color: #000;
+    color: #fff;
+}
+
+footer .whoIsOnline {
+    padding: 10px;
+}
+
+.whoIsOnline div {
+    border: 1px solid #fff;
+    padding: 5px;
+    margin: 5px;
+}
+
+.whoIsOnline div span {
+    color: yellow;
+}
+
+.whoIsOnline div a {
+    color: #558C89;
+}
+
+.whoIsOnline h3 {
+    color: #558C89;
+    padding: 5px;
+    width: 18%;
+    display:inline-block;
+}
+
+.whoIsOnline a:first-of-type h3 {
+    border-right: 2px solid #558C89;
+}
+
+footer a h4  {
+    text-align: center;
+    color: #fff;
+}
+
+/*Topics styling*/
+
+
+
+.topics h2, .viewTopic h2 {
+    font-size: 1.4rem;
+    text-align: center;
+    padding: 5px;
+    background: #fff;
+    text-shadow: 1px 1px #000;
+    width: 50%;
+    margin: 0 auto 20px;
+    color: #558C89;
+}
+
+a.button {
+    text-decoration: none;
+    padding: 6px;
+    background:#558C89;
+    color: #ffffff;
+}
+
+.topicOptions {
+    padding: 0 21px 21px 21px;
+}
+
+.topicButtons {
+    width: 66%;
+    display: inline-block;
+}
+
+.selectForums {
+    width:33%;
+    display: inline-block;
+}
+
+.answer {
+    padding: 20px;
+
+}
+
+.answerBody {
+    background:rgba(255,255,255, .7);
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.topic {
+    padding: 20px;
+    background: #558C89;
+    margin: 0 20px;
+}
+
+.viewTopicButtons {
+    padding: 6px;
+    margin: 4px;
+}
+
+.answerButtons {
+    padding: 6px;
+    margin-top: 4px;
+}
+
+.viewTopicButtons button {
+    background: #558C89;
+    color: #ffffff;
+    font-size: 17px;
+    height: 26px;
+    margin-top: -4px;
+}
+
+#answerField {
+    background: rgba(255,255,255, .7);
+    margin: 21px;
+    overflow: hidden;
+}
+
+#answerField label {
+    display: inline-block;
+    width: 15%;
+    margin-bottom: 10px;
+}
+
+#answerField label:first-of-type {
+    margin-bottom: 40px;
+}
+
+#answerField textarea {
+    width: 100%;
+    height: 150px;
+    display: block;
+}
+
+#answerField a    {
+    background-color: #fff;
+    text-decoration: none;
+    padding: 3px;
+    float: right
+}
+
+.vote {
+    background-color: #ccc;
+    text-decoration: none;
+    padding: 3px;
+}
+
+#topicBody {
+    padding: 20px;
+    background-color: #fff;
+    margin-top: 20px;
+    font-size: 21px;
+}
+
+.vote {
+    background-color: #fff;
+    text-decoration: none;
+    padding: 3px;
+}
+
+.topicName {
+    font-size: 21px;
+    background-color: #fff;
+    padding: 3px;
+}
+
+.topic p, .answerBody p {
+    margin-bottom: 10px;
+}
+
+.answerName {
+    font-size: 21px;
+    padding: 3px;
+    background-color: #fff;
+}
+
+.dateTime {
+    text-align: center;
+    font-size: 15px;
+}
+
+.profile {
+    background: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.profile h2, .profile h3, .profile p {
+    margin-bottom: 10px;
+    background-color: orange;
+    border: 1px solid #000;
+    padding: 5px;
+
+}
+
+.profile h2 {
+    background: #558C89;
+}
+
+.profile h3 {
+    background: #fff;
+}
+
+.profile p {
+    color: #000;
+    text-shadow: 1px 1px #fff;
+}
+
+.administration {
+    margin-top: -50px;
+    background: rgb(116, 175, 173);
+    margin: 20px;
+    padding: 10px;
+}
+
+.administration header a {
+    margin-top: 15px;
+}
+
+.administration a {
+    font-size: 21px;
+    margin-bottom: 20px;
+    display: inline-block;
+    padding: 5px;
+    text-decoration: none;
+    background: #558C89;
+    color: #fff;
+    text-shadow: 1px 1px #000;
+}
+
+.administration p {
+    font-size: 21px;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+#categoryName {
+    width: 99%;
+    padding: 5px;
+}
+
+
+
+html, body, ul, li, form, p, a, section, article, main, header, footer, div, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
