@@ -10,12 +10,27 @@ class DefaultRouter implements IRouter {
     const REQUEST_URI_CONTROLLER = 2;
     const REQUEST_URI_ACTION = 3;
 
+    const DEFAULT_CONTROLLER = 'Welcome';
+    const DEFAULT_ACTION = 'index';
+
     public function getController() {
-        return ucfirst(explode('/', $_SERVER['REQUEST_URI'])[self::REQUEST_URI_CONTROLLER]);
+        $uri = explode('/', $_SERVER['REQUEST_URI']);
+
+        if (!empty($uri[self::REQUEST_URI_CONTROLLER])) {
+            return ucfirst($uri[self::REQUEST_URI_CONTROLLER]);
+        }
+
+        return self::DEFAULT_CONTROLLER;
     }
 
     public function getAction() {
-        return explode('/', $_SERVER['REQUEST_URI'])[self::REQUEST_URI_ACTION];
+        $uri = explode('/', $_SERVER['REQUEST_URI']);
+
+        if (!empty($uri[self::REQUEST_URI_ACTION])) {
+            return $uri[self::REQUEST_URI_ACTION];
+        }
+
+        return self::DEFAULT_ACTION;
     }
 
     public function registerRequest() {

@@ -12,6 +12,10 @@ abstract class Controller {
     private $_request;
     
     protected $isAdmin = false;
+
+    protected $antiForgeryToken;
+
+    const CSRF_TOKEN_KEY = 'anti-forgery-token';
     
     public function __construct(\ANSR\App $app, \ANSR\View $view, \ANSR\Library\Request\Request $request) {
         $this->_app = $app;
@@ -36,6 +40,23 @@ abstract class Controller {
             $this->getApp()->UserModel->updateLastClick($_SESSION['user_id'], $this->getView()->getFrontController()->getRouter()->getController() . '/' .  $this->getView()->getFrontController()->getRouter()->getAction());
             $this->isAdmin = $this->getApp()->UserModel->isAdmin(isset($_SESSION['user_id']) ? $_SESSION['user_id'] : 0);
         }
+        if (!isset($_SESSION[self::CSRF_TOKEN_KEY])) {
+            $_SESSION[self::CSRF_TOKEN_KEY] = md5(microtime());
+        }
+        if (empty($this->getRequest()->getPost()->getParams())) {
+            $_SESSION[self::CSRF_TOKEN_KEY] = md5(microtime());
+        }
+        $this->antiForgeryToken = $_SESSION[self::CSRF_TOKEN_KEY];
+        $this->getView()->csrfValidator = '<input name="'.self::CSRF_TOKEN_KEY.'" id="'.self::CSRF_TOKEN_KEY.'" type="hidden" value="'. $this->antiForgeryToken .'" />';
+        $this->getView()->csrfJquery = "'anti-forgery-token': '" . $this->antiForgeryToken . "'";
+    }
+
+    public function isCsrfTokenValid() {
+        if (false != ($token = $this->getRequest()->getPost()->getParam(self::CSRF_TOKEN_KEY))) {
+            return $token == $this->antiForgeryToken;
+        }
+
+        return false;
     }
 
     /**

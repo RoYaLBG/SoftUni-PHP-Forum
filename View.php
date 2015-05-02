@@ -22,6 +22,9 @@ class View {
     private static $_footer;
     private static $_aside;
 
+    private $csrfValidator;
+    private $csrfJquery;
+
     public function setFrontController(\ANSR\Dispatcher\FrontController $fronController) {
         $this->_frontController = $fronController;
     }
@@ -179,5 +182,13 @@ class View {
 
     public static function setAside($aside) {
         self::$_aside = $aside;
+    }
+
+    public function getCsrfValidator() {
+        return $this->csrfValidator;
+    }
+
+    public function getCsrfJqueryData() {
+        return $this->csrfJquery;
     }
 }

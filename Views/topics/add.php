@@ -1,9 +1,11 @@
+<?php /** @var \ANSR\View $this */ ?>
     <script>
         function addTopic() {
             $.post("", {
                 summary: $('#summary').val(),
                 body: $('#body').val(),
-                tags: $('#tags').val()
+                tags: $('#tags').val(),
+                <?= $this->getCsrfJqueryData(); ?>
             }).done(function (response) {
                 var json = $.parseJSON(response);
                 if (json.success == 1) {
@@ -18,6 +20,7 @@
         <input type="text" name="summary" id="summary" placeholder="Summary"/>
         <textarea name="body" id="body" placeholder="Description"></textarea>
         <input type="text" id="tags" placeholder="tags"/>
+        <?= $this->csrfValidator; ?>
         <button onclick="addTopic()">Add topic</button>
     </div>
 

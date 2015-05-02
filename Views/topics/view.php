@@ -12,6 +12,7 @@
                 <input type="text" name="summary" id="summary" placeholder="Summary" value="<?=$this->topic['summary'];?>"/>
                 <textarea name="body" id="body" placeholder="Description"><?=$this->topic['body'];?></textarea>
                 <input type="text" id="tags" placeholder="tags" value="<?= $this->tags; ?>" />
+                 <?= $this->getCsrfValidator(); ?>
                 <button onclick="editTopic()">Edit topic</button>
                 <button onclick="cancelEdit()">Cancel</button>
             </div>
@@ -84,7 +85,7 @@
             '<input type="text" id="author" /><br />';
         <?php endif; ?>
         answerHtml += '<label for="answer">Answer</label>' +
-            '<textarea id="answer""></textarea><br />' +
+            '<textarea id="answer""></textarea><br />' + '<?= $this->getCsrfValidator(); ?>' +
             '<a href="#" id="submitAnswer" onclick="addReply()">Submit</a>'
         answerField.html(answerHtml);
         answerField.css("padding", "20px");
@@ -97,7 +98,7 @@
     
     $("#closeTopic").click(function() {
         $.post("<?= $this->url('topics', 'close', 'id', $this->topic['id']);?>", {
-            
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response){
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -108,7 +109,7 @@
     
     $("#reopenTopic").click(function() {
         $.post("<?= $this->url('topics', 'reopen', 'id', $this->topic['id']);?>", {
-            
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response){
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -119,7 +120,7 @@
     
     $("#deleteTopic").click(function() {
         $.post("<?= $this->url('topics', 'delete', 'id', $this->topic['id']);?>", {
-            
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response){
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -132,7 +133,8 @@
     function addReply() {
         $.post("<?= $this->url('answers', 'add', 'topicid', $this->topic['id']); ?>", {
             username: $('#author').val(),
-            body: $('#answer').val()
+            body: $('#answer').val(),
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response) {
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -145,7 +147,8 @@
         $.post("<?= $this->url('topics', 'edit', 'id', $this->topic['id']); ?>", {
             summary: $('#summary').val(),
             body: $('#body').val(),
-            tags: $('#tags').val()
+            tags: $('#tags').val(),
+            <?= $this->getCsrfJqueryData() ;?>
         }).done(function (response) {
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -171,7 +174,8 @@
     
     function editAnswer(answer_id) {
         $.post("<?= $this->url('answers', 'edit', 'id'); ?>" + answer_id , {
-            body: $('#body' + answer_id).val()
+            body: $('#body' + answer_id).val(),
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response) {
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -182,7 +186,7 @@
     
     function deleteAnswer(answer_id) {
         $.post("<?= $this->url('answers', 'delete', 'id');?>" + answer_id , {
-            
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response){
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -194,7 +198,8 @@
     function upvoteTopic(voted_id, topic_id) {
         $.post("<?= $this->url('users', 'vote', 'id'); ?>" + voted_id , {
             topicid: topic_id,
-            action: 1
+            action: 1,
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response) {
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -206,7 +211,8 @@
     function downvoteTopic(voted_id, topic_id) {
         $.post("<?= $this->url('users', 'vote', 'id'); ?>" + voted_id , {
             topicid: topic_id,
-            action: -1
+            action: -1,
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response) {
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -218,7 +224,8 @@
     function upvoteAnswer(voted_id, answer_id) {
         $.post("<?= $this->url('users', 'vote', 'id'); ?>" + voted_id , {
             answerid: answer_id,
-            action: 1
+            action: 1,
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response) {
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -230,7 +237,8 @@
     function downvoteAnswer(voted_id, answer_id) {
         $.post("<?= $this->url('users', 'vote', 'id'); ?>" + voted_id , {
             answerid: answer_id,
-            action: -1
+            action: -1,
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response) {
             var json = $.parseJSON(response);
             if (json.success == 1) {

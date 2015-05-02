@@ -46,7 +46,9 @@ class Topics extends Controller {
         }
         
         if ($this->getRequest()->getPost()->getParam('summary')) {
-
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+            }
             $summary = $this->getRequest()->getPost()->getParam('summary');
             $body = $this->getRequest()->getPost()->getParam('body');
             $forum_id = $this->getRequest()->getParam('forumid');
@@ -89,6 +91,9 @@ class Topics extends Controller {
     
     public function edit() {
         if ($this->getRequest()->getParam('id')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+            }
             $topic_id = $this->getRequest()->getParam('id');
             $topic = $this->getApp()->TopicModel->getTopicById($topic_id);
 
@@ -110,6 +115,9 @@ class Topics extends Controller {
     
     public function close() {
         if ($this->getRequest()->getParam('id')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+            }
             $topic_id = $this->getRequest()->getParam('id');
             $topic = $this->getApp()->TopicModel->getTopicById($topic_id);
 
@@ -126,6 +134,9 @@ class Topics extends Controller {
     
     public function reopen() {
         if ($this->getRequest()->getParam('id')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+            }
             $topic_id = $this->getRequest()->getParam('id');
 
             if ($this->isAdmin) {
@@ -140,6 +151,9 @@ class Topics extends Controller {
     
     public function delete() {
         if ($this->getRequest()->getParam('id')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+            }
             $topic_id = $this->getRequest()->getParam('id');
             $topic = $this->getApp()->TopicModel->getTopicById($topic_id);
 

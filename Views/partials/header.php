@@ -12,7 +12,7 @@
         $(document).ready(function () {
             $("#logoutButton").click(function () {
                 $.post("<?= $this->url('users', 'logout'); ?>", {
-
+                    <?= $this->getCsrfJqueryData(); ?>
                 }).done(function () {
                     window.location = "<?= $this->url('welcome', 'index'); ?>";
                 });
@@ -28,7 +28,7 @@
                     '<label for="userLogin">Username</label>' +
                     '<input type="text" id="userLogin"/>' +
                     '<label for="passLogin">Password</label>' +
-                    '<input type="password" id="passLogin"/>' +
+                    '<input type="password" id="passLogin"/>' + '<?= $this->getCsrfValidator(); ?>' +
                     '<button id="submit" onclick="login();">Submit</button>');
                 $('#response').html('');
                 $('#topics').html('');
@@ -105,7 +105,8 @@
         function login() {
            $.post("<?= $this->url('users', 'login'); ?>", {
                username: $('#userLogin').val(),
-               password: $('#passLogin').val()
+               password: $('#passLogin').val(),
+               <?= $this->getCsrfJqueryData() ;?>
            }).done(function (response) {
                var json = $.parseJSON(response);
                if (json.success == 1) {

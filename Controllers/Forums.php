@@ -32,6 +32,9 @@ class Forums extends Controller {
         }
         
         if ($this->getRequest()->getParam('id')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0)));
+            }
             $id = $this->getRequest()->getParam('id');
             if ($this->getApp()->ForumModel->delete($id)) {
                 die(json_encode(['success' => 1]));

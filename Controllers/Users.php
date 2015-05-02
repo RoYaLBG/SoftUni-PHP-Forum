@@ -11,6 +11,10 @@ class Users extends Controller {
     public function login() {
         
         if ($this->getRequest()->getPost()->getParam('username')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+            }
+
             $user = $this->getRequest()->getPost()->getParam('username');
             $pass = $this->getRequest()->getPost()->getParam('password');
             
@@ -88,6 +92,9 @@ class Users extends Controller {
     }
     
     public function logout() {
+        if (!$this->isCsrfTokenValid()) {
+            die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+        }
         session_destroy();
         exit;
     }
@@ -145,6 +152,9 @@ class Users extends Controller {
         if ($this->getRequest()->getParam('id')) {
             $id = $this->getRequest()->getParam('id');
             if ($id == $_SESSION['user_id'] || $this->isAdmin) {
+                if (!$this->isCsrfTokenValid()) {
+                    $this->redirect('welcome');
+                }
                 $username = $this->getRequest()->getPost()->getParam('username');
                 $email = $this->getRequest()->getPost()->getParam('email');
                 $password = $this->getRequest()->getPost()->getParam('password');

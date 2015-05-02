@@ -42,6 +42,9 @@ class Administration extends Controller {
         $this->getView()->categories = $this->getApp()->CategoryModel->getCategories();
         
         if ($this->getRequest()->getPost()->getParam('submit')) {
+            if (!$this->isCsrfTokenValid()) {
+                $this->redirect('welcome');
+            }
             $name = $this->getRequest()->getPost()->getParam('name');
             $category_id = $this->getRequest()->getPost()->getParam('category');
             $this->getApp()->ForumModel->add($name, $category_id, 1);
@@ -51,6 +54,9 @@ class Administration extends Controller {
     
     public function addCategory() {
         if ($this->getRequest()->getPost()->getParam('name')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0)));
+            }
             $name = $this->getRequest()->getPost()->getParam('name');
             
             if ($this->getApp()->CategoryModel->add($name)) {

@@ -1,3 +1,4 @@
+<?php /** @var \ANSR\View $this */ ?>
 <?php $this->partial('adminheader.php'); ?>
     <div class="category">
         <a href="#" id="toggledCategoryAdd">Add category</a> | <a href="<?= $this->url('administration', 'addforum');?>">Add forum</a>
@@ -17,7 +18,7 @@
 <script>    
     function deleteForum(forum_id) {
         $.post("<?= $this->url('forums', 'delete', 'id'); ?>" + forum_id , {
-
+            <?= $this->getCsrfJqueryData(); ?>
         }).done(function (response) {
             var json = $.parseJSON(response);
             if (json.success == 1) {
@@ -34,7 +35,8 @@
         $("#categoryName").keypress(function(e) {
             if (e.keyCode == 13) {
                 $.post("<?= $this->url('administration', 'addcategory'); ?>", {
-                    name: $("#categoryName").val()
+                    name: $("#categoryName").val(),
+                    <?= $this->getCsrfJqueryData(); ?>
                 }).done(function (response) {
                     var json = $.parseJSON(response);
                     if (json.success == 1) {

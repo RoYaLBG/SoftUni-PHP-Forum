@@ -1,3 +1,4 @@
+<?php /** @var \ANSR\View $this */ ?>
 <?php if (!isset($this->user) || empty($this->user)): ?>
     <h2> No such user  </h2>
 <?php elseif ($this->isOwnProfile || $this->isAdmin): ?>
@@ -11,6 +12,7 @@
             <p><label>Repeat: <span><input type="password" name="passwordRepeat"/></span></label></p>
             <p>Posts: <span><?= $this->user['posts']; ?></span></p>
             <p>Votes: <span><?= $this->user['votes']; ?></span></p>
+            <?= $this->getCsrfValidator(); ?>
             <input type="submit" value="Edit"/>
         </form>
     </section>

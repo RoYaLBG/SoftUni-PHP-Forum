@@ -11,6 +11,7 @@
             <?php endforeach; ?>
         </select>
         <input type="text" name="name" class="forum" value="<?= $this->forum['name']; ?>">
+        <?= $this->csrfValidator; ?>
         <input type="submit" name="submit" value="edit"/>
     </form>
 </section>

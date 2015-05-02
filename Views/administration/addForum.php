@@ -8,6 +8,7 @@
             <?php endforeach; ?>
         </select>
         <input type="text" name="name" class="forum" placeholder="Forum name">
+        <?= $this->csrfValidator; ?>
         <input type="submit" name="submit" value="Add"/>
     </form>
 </section>

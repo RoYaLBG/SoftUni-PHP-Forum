@@ -18,7 +18,11 @@ class Answers extends Controller {
                 die(['success' => 0]);
             }
         }
-        
+
+        if (!$this->isCsrfTokenValid()) {
+            die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+        }
+
         $body = $this->getRequest()->getPost()->getParam('body');
         $topic_id = $this->getRequest()->getParam('topicid');
         
@@ -31,6 +35,9 @@ class Answers extends Controller {
     
     public function edit() {
         if ($this->getRequest()->getParam('id')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+            }
             $answer_id = $this->getRequest()->getParam('id');
             $answer = $this->getApp()->AnswerModel->getAnswerById($answer_id);
 
@@ -50,6 +57,9 @@ class Answers extends Controller {
     
     public function delete() {
         if ($this->getRequest()->getParam('id')) {
+            if (!$this->isCsrfTokenValid()) {
+                die(json_encode(array('success' => 0, 'msg' => 'Wrong CSRF Token')));
+            }
             $answer_id = $this->getRequest()->getParam('id');
             $answer = $this->getApp()->AnswerModel->getAnswerById($answer_id);
 
