@@ -114,6 +114,10 @@ class Users extends Controller {
         if (false == ($voted_id = $this->getRequest()->getParam('id'))) {
             die(json_encode(['success' => 0]));
         }
+
+        if (!$this->isCsrfTokenValid()) {
+            die(json_encode(['success' => 0]));
+        }
         
         if ($this->getRequest()->getPost()->getParam('topicid')) {
             $answer_id = null;
